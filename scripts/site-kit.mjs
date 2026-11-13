@@ -3,7 +3,7 @@
 // It writes one folder per language under docs/, with canonical, hreflang, Open Graph, JSON-LD
 // and a sitemap, so GitHub Pages can serve docs/ as-is.
 
-import { mkdirSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 export const ORG_SITE = "https://gift-club.github.io";
@@ -66,8 +66,9 @@ a:hover{text-decoration-thickness:2px}
 .wrap{max-width:860px;margin:0 auto;padding:0 16px}
 header{border-bottom:1px solid var(--line)}
 header .wrap{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
-.brand{font-weight:700;color:var(--ink);text-decoration:none}
-.brand span{color:var(--accent)}
+.brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);text-decoration:none}
+.brand img{display:block;width:32px;height:32px;border-radius:8px}
+.brand em{font-style:normal;color:var(--accent)}
 nav ul{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0;font-size:15px}
 nav a{color:var(--muted);text-decoration:none}
 nav a[aria-current=page]{color:var(--ink);font-weight:600}
@@ -158,13 +159,14 @@ ${hreflang}
 <meta property="og:locale" content="${OG_LOCALE[lang]}">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0d0b14">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffcf4a'/%3E%3Cpath d='M14 28h36v24H14zM10 20h44v10H10zM32 20v32' stroke='%230d0b14' stroke-width='5' fill='none'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="${site.root}favicon-32.png">
+<link rel="apple-touch-icon" href="${site.root}apple-touch-icon.png">
 <style>${CSS.trim()}</style>
 ${jsonLd}
 </head>
 <body>
 <header><div class="wrap">
-<a class="brand" href="${localHref(site, lang)}">Gift Club <span>${esc(site.short[lang] ?? site.short.en)}</span></a>
+<a class="brand" href="${localHref(site, lang)}"><img src="${site.root}logo-64.png" width="32" height="32" alt=""><span>Gift Club <em>${esc(site.short[lang] ?? site.short.en)}</em></span></a>
 ${nav ? `<nav aria-label="${esc(ui.navLabel)}"><ul>${nav}</ul></nav>` : ""}
 </div></header>
 <main><div class="wrap">
@@ -213,6 +215,9 @@ export const writeSite = (outDir, site, pages, uiByLang) => {
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls}\n</urlset>\n`,
   );
   writeFileSync(join(outDir, ".nojekyll"), "");
+  // The logo and icons: site/brand/ beside docs/, copied to the site root.
+  const brand = join(dirname(outDir), "site", "brand");
+  if (existsSync(brand)) cpSync(brand, outDir, { recursive: true });
   return pages.length;
 };
 
