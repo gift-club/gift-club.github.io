@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gift-club.github.io/sitemap.xml
+Sitemap: https://gift-club.github.io/telegram-gifts-dataset/sitemap.xml
+Sitemap: https://gift-club.github.io/telegram-stars-calculator/sitemap.xml
+Sitemap: https://gift-club.github.io/provably-fair-verifier/sitemap.xml

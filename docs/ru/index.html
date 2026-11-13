@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gift Club с открытым кодом: данные Telegram, калькулятор, проверка</title>
+<meta name="description" content="Открытые данные и инструменты Gift Club: датасет цен звёзд, Premium и подарков Telegram, калькулятор звёзд на JavaScript и доказуемо честная проверка раундов.">
+<link rel="canonical" href="https://gift-club.github.io/ru/">
+<link rel="alternate" hreflang="en" href="https://gift-club.github.io/">
+<link rel="alternate" hreflang="ru" href="https://gift-club.github.io/ru/">
+<link rel="alternate" hreflang="uk" href="https://gift-club.github.io/uk/">
+<link rel="alternate" hreflang="es" href="https://gift-club.github.io/es/">
+<link rel="alternate" hreflang="pl" href="https://gift-club.github.io/pl/">
+<link rel="alternate" hreflang="it" href="https://gift-club.github.io/it/">
+<link rel="alternate" hreflang="tr" href="https://gift-club.github.io/tr/">
+<link rel="alternate" hreflang="de" href="https://gift-club.github.io/de/">
+<link rel="alternate" hreflang="fr" href="https://gift-club.github.io/fr/">
+<link rel="alternate" hreflang="x-default" href="https://gift-club.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gift Club">
+<meta property="og:title" content="Gift Club с открытым кодом: данные Telegram, калькулятор, проверка">
+<meta property="og:description" content="Открытые данные и инструменты Gift Club: датасет цен звёзд, Premium и подарков Telegram, калькулятор звёзд на JavaScript и доказуемо честная проверка раундов.">
+<meta property="og:url" content="https://gift-club.github.io/ru/">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0d0b14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffcf4a'/%3E%3Cpath d='M14 28h36v24H14zM10 20h44v10H10zM32 20v32' stroke='%230d0b14' stroke-width='5' fill='none'/%3E%3C/svg%3E">
+<style>:root{color-scheme:dark;--bg:#0d0b14;--panel:#17141f;--line:#2a2535;--ink:#f3f0fa;--muted:#a59fb5;--accent:#ffcf4a;--link:#8ec5ff}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--link)}
+a:hover{text-decoration-thickness:2px}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px}
+header{border-bottom:1px solid var(--line)}
+header .wrap{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:700;color:var(--ink);text-decoration:none}
+.brand span{color:var(--accent)}
+nav ul{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0;font-size:15px}
+nav a{color:var(--muted);text-decoration:none}
+nav a[aria-current=page]{color:var(--ink);font-weight:600}
+main{padding:28px 0 40px}
+h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 12px}
+h2{font-size:24px;line-height:1.25;margin:36px 0 10px}
+h3{font-size:19px;margin:24px 0 8px}
+.lead{font-size:18px;color:var(--ink)}
+.meta{color:var(--muted);font-size:14px}
+.answer{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:14px 16px;margin:18px 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.table-wrap{overflow-x:auto;margin:12px 0;border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+pre,code{overflow-wrap:anywhere}
+pre{white-space:pre}
+th{background:var(--panel);position:sticky;top:0}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+caption{caption-side:top;text-align:left;padding:8px 10px;color:var(--muted);font-size:14px}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:14px}
+code{background:var(--panel);padding:1px 5px;border-radius:5px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow-x:auto}
+pre code{background:none;padding:0}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.langs{display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;color:var(--muted)}
+.langs a{color:var(--muted)}
+.langs a[aria-current=true]{color:var(--ink);font-weight:600;text-decoration:none}
+footer{border-top:1px solid var(--line);padding:24px 0 40px;color:var(--muted);font-size:14px}
+footer p{margin:6px 0}
+iframe{max-width:100%}</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","@id":"https://giftclub.app/#organization","name":"Gift Club","url":"https://giftclub.app/","sameAs":["https://github.com/gift-club","https://gift-club.github.io/"],"logo":"https://giftclub.app/favicon.ico"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Gift Club open source","url":"https://gift-club.github.io/ru/","inLanguage":"ru","publisher":{"@id":"https://giftclub.app/#organization"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Данные Telegram","url":"https://gift-club.github.io/telegram-gifts-dataset/ru/"},{"@type":"ListItem","position":2,"name":"Калькулятор звёзд","url":"https://gift-club.github.io/telegram-stars-calculator/ru/"},{"@type":"ListItem","position":3,"name":"Доказуемо честная проверка","url":"https://gift-club.github.io/provably-fair-verifier/ru/"}]}</script>
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="/ru/">Gift Club <span>open source</span></a>
+
+</div></header>
+<main><div class="wrap">
+<h1>Открытый код Gift Club</h1>
+<p class="lead">Открытые данные и инструменты про звёзды и подарки Telegram: бери, цитируй, используй в своих проектах.</p>
+
+<div class="cards"><a class="card" href="/telegram-gifts-dataset/ru/" style="text-decoration:none"><h3>Данные Telegram</h3><p>Цены звёзд и Telegram Premium по странам, все коллекции подарков и все лимитированные подарки. CSV и JSON, CC BY 4.0.</p></a><a class="card" href="/telegram-stars-calculator/ru/" style="text-decoration:none"><h3>Калькулятор звёзд</h3><p>Сколько стоит любое число звёзд Telegram на Fragment и в App Store в 18 странах. Пакет npm и веб-компонент.</p></a><a class="card" href="/provably-fair-verifier/ru/" style="text-decoration:none"><h3>Доказуемо честная проверка</h3><p>Пересчитай любой раунд Gift Club по его сидам через HMAC-SHA256. Проверено на собственных данных сервера.</p></a></div>
+<h2>О Gift Club</h2>
+<p><a href="https://giftclub.app/ru/">Gift Club</a> — мини-приложение Telegram с кейсами, скретч-картами и мини-играми на звёзды Telegram или Gram и бесплатными искрами каждые 4 часа. Здесь опубликованы данные и код, на которых оно работает.</p>
+</div></main>
+<footer><div class="wrap">
+<p class="langs" aria-label="Языки"><a href="/" hreflang="en" lang="en">English</a><a href="/ru/" hreflang="ru" lang="ru" aria-current="true">Русский</a><a href="/uk/" hreflang="uk" lang="uk">Українська</a><a href="/es/" hreflang="es" lang="es">Español</a><a href="/pl/" hreflang="pl" lang="pl">Polski</a><a href="/it/" hreflang="it" lang="it">Italiano</a><a href="/tr/" hreflang="tr" lang="tr">Türkçe</a><a href="/de/" hreflang="de" lang="de">Deutsch</a><a href="/fr/" hreflang="fr" lang="fr">Français</a></p>
+<p><a href="https://giftclub.app/ru/">Gift Club</a>: мини-приложение Telegram с кейсами и играми.</p>
+<p>Проекты: <a href="/telegram-gifts-dataset/ru/">Данные Telegram</a> · <a href="/telegram-stars-calculator/ru/">Калькулятор звёзд</a> · <a href="/provably-fair-verifier/ru/">Доказуемо честная проверка</a> · <a href="https://github.com/gift-club">GitHub</a></p>
+
+</div></footer>
+</body>
+</html>
