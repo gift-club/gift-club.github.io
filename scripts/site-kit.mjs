@@ -159,7 +159,9 @@ ${hreflang}
 <meta property="og:locale" content="${OG_LOCALE[lang]}">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#0d0b14">
+<link rel="icon" href="${site.root}favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="${site.root}favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="${site.root}icon-192.png">
 <link rel="apple-touch-icon" href="${site.root}apple-touch-icon.png">
 <style>${CSS.trim()}</style>
 ${jsonLd}

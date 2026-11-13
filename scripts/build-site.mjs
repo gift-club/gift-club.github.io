@@ -79,7 +79,7 @@ ${SISTER_SITES.map((s) => `Sitemap: ${ORG_SITE}${s.path}sitemap.xml`).join("\n")
 writeFileSync(
   `${DOCS}/404.html`,
   `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Page not found · Gift Club</title><meta name="robots" content="noindex"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<title>Page not found · Gift Club</title><meta name="robots" content="noindex"><link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <style>body{margin:0;background:#0d0b14;color:#f3f0fa;font:16px/1.6 system-ui,sans-serif;display:grid;place-items:center;min-height:100vh;padding:16px;text-align:center}a{color:#8ec5ff}</style></head>
 <body><main><h1>Page not found</h1><p>${SISTER_SITES.map((s) => `<a href="${s.path}">${esc(content.en.ui.sisters[s.key])}</a>`).join(" · ")}</p><p><a href="${MAIN_SITE}/">Gift Club</a></p></main></body></html>
 `,
