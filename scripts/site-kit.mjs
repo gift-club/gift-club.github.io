@@ -40,6 +40,30 @@ const OG_LOCALE = {
 /** giftclub.app home page for a language: English at the root, every other language under its prefix. */
 export const mainHome = (lang) => (lang === "en" ? `${MAIN_SITE}/` : `${MAIN_SITE}/${lang}/`);
 
+/**
+ * Two giftclub.app guides linked from every footer (added 2026-11-16): free Stars and free gifts.
+ * Anchors follow each language's own article title or keyword on giftclub.app.
+ */
+export const FOOTER_GUIDES = {
+  en: { label: "Guides", stars: "Free Telegram Stars", gifts: "Free Telegram gifts" },
+  ru: { label: "Гайды", stars: "Бесплатные звёзды в ТГ", gifts: "Подарки в ТГ бесплатно" },
+  uk: { label: "Гайди", stars: "Безкоштовні зірки в Telegram", gifts: "Подарунки в ТГ безкоштовно" },
+  es: { label: "Guías", stars: "Estrellas de Telegram gratis", gifts: "Regalos de Telegram gratis" },
+  pl: { label: "Poradniki", stars: "Darmowe Gwiazdki Telegram", gifts: "Darmowe prezenty w Telegramie" },
+  it: { label: "Guide", stars: "Stelle Telegram gratis", gifts: "Regali Telegram gratis" },
+  tr: { label: "Rehberler", stars: "Ücretsiz Yıldız alma", gifts: "Ücretsiz Telegram hediyesi" },
+  de: { label: "Ratgeber", stars: "Telegram Sterne kostenlos", gifts: "Kostenlose Telegram-Geschenke" },
+  fr: { label: "Guides", stars: "Étoiles Telegram gratuites", gifts: "Cadeaux Telegram gratuits" },
+};
+
+/** The footer line with both guides, in the page's language. */
+const guidesLine = (lang) => {
+  const g = FOOTER_GUIDES[lang] ?? FOOTER_GUIDES.en;
+  const base = mainHome(lang);
+  const colon = lang === "fr" ? "\u00a0:" : ":";
+  return `<p>${esc(g.label)}${colon} <a href="${base}blog/earn-free-telegram-stars">${esc(g.stars)}</a> · <a href="${base}blog/free-telegram-gifts">${esc(g.gifts)}</a></p>`;
+};
+
 /** The Gift Club sites on gift-club.github.io, for the cross-links in every footer. */
 export const SISTER_SITES = [
   { key: "dataset", path: "/telegram-gifts-dataset/" },
@@ -180,6 +204,7 @@ ${page.body}
 <footer><div class="wrap">
 ${langLinks ? `<p class="langs" aria-label="${esc(ui.langsLabel)}">${langLinks}</p>` : ""}
 <p>${ui.footerBy(`<a href="${mainHome(lang)}">Gift Club</a>`)}</p>
+${guidesLine(lang)}
 <p>${esc(ui.moreLabel)}: ${sisters} · <a href="${site.repo}">${esc(ui.sourceOnGithub)}</a></p>
 ${site.licence ? `<p>${site.licence[lang] ?? site.licence.en}</p>` : ""}
 </div></footer>
